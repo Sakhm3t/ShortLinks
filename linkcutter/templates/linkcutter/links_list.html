@@ -1,0 +1,35 @@
+{% extends 'linkcutter/base.html' %}
+
+{% block content %}
+ <h5> Link list </h5>
+    <table class = tbl >
+    <col class="col1">
+    <col class="col2">
+        <tr>
+            <td>Short link</td>
+            <td>Full link</td>
+        </tr>
+        {% for l in object_list %}
+            <tr>
+                <td> <a href = {{ l.full_link }}>{{ absolute_short_url_prefix }}{{ l.short_link }}</a></td>
+                <td ><div class=custom > <a href = {{ l.full_link }}>{{ l.full_link }}</a></div></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">&lt; previous</a>
+    {% endif %}
+    <nav>
+        {% for page in paginator.page_range %}
+            {% if page_obj.number == page %}
+                <b>{{ page }}</b>
+            {% elif page_obj.number|add:-2 <= page and page <= page_obj.number|add:2 %}
+                <a href="?page={{ page }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+    </nav>
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"> next &gt;</a>
+    {% endif %}
+{% endblock content %}

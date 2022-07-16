@@ -1,0 +1,26 @@
+.custom {
+    color: #6200ff;
+    font-size:20px;
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    background: #fafafa; /* Цвет фона */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+.tbl {
+    border-style: groove;
+    border-collapse: separate;
+    table-layout: fixed; /* Фиксированная ширина ячеек */
+    width: 80%; /* Ширина таблицы */
+   }
+.col1 { width: 40%; }
+.col2 { width: 60%; }
+
+.error{
+    color:red;
+    font-size:20px;
+}
+.img{
+    width: 30%;
+    height: 30%;
+
+}

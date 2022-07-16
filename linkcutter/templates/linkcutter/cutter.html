@@ -1,0 +1,15 @@
+{% extends 'linkcutter/base.html' %}
+
+{% block content %}
+    <h3>URL cutter</h3><br>
+        <form action="/cut/" method="post">
+            {% csrf_token %}
+            <label for="full_link">Entered link: </label>
+            <input id="full_link" type="text" name="full_link" maxlength="500" size="120" value="{{ full_link }}"><br>
+            <br>
+            <label for="cut_link">Short link:   </label>
+            <input id="cut_link" type="text" name="cut_link" maxlength="50" size="50" readonly value="{{ cut_link }}"><br>
+            <br>
+            <input type="submit"  value="  Short  ">
+        </form>
+{% endblock content %}

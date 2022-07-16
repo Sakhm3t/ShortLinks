@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+    <link rel=stylesheet href={% static "linkcutter\css\style_linkcutter.css" %}>
+</head>
+<body>
+
+{% block title01 %}
+    <div>
+        <a href="{% url 'linkcutter:index' %}"><h2>URL Shortener</h2><br></a>
+            <a href="{% url 'linkcutter:register' %}">Register</a>
+            <a href="{% url 'linkcutter:login' %}">Login</a>
+            <a href="{% url 'linkcutter:logout' %}">Logout</a>
+            <a href="{% url 'linkcutter:link_list' %}">List</a>
+    </div>
+        {% if request.user.is_authenticated %}
+            <p>You are logged as: {{ request.user }} </p>
+        {% else %}
+            <p>You are not logged. If you want to see your list of short links, you have to logged. </p>
+        {% endif %}
+{% endblock title01 %}
+
+{% block content %}
+    {% if invalid_link %}
+        <p class="error">{{ invalid_link }}</p>
+    {% endif %}
+    <br>
+    <h3>URL cutter</h3><br>
+        <form action="/cut/" method="post">
+            {% csrf_token %}
+            <label for="full_link">Enter link: </label>
+            <input id="full_link" type="text" name="full_link" maxlength="500" size="100" placeholder="ex. https://docs.djangoproject.com/en/3.2/topics/auth/default/#the-loginrequired-mixin"><br>
+            <br>
+            <input type="submit" value="  Short  ">
+        </form>
+
+{% endblock content %}
+
+{% block content01 %}
+
+{% endblock content01 %}
+
+</body>

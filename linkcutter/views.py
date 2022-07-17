@@ -40,7 +40,7 @@ def logout_view(request):
 
 list_for_random = list(map(chr, range(ord("a"), ord("z"))))
 list_for_random.extend(map(chr, range(ord("A"), ord("Z"))))
-list_for_random.append(map(chr, range(ord("0"), ord("9"))))
+list_for_random.extend(map(chr, range(ord("0"), ord("9"))))
 
 
 def gen_short_link():

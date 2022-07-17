@@ -1,1 +1,1 @@
-web: gunicorn application.wsgi
+web: gunicorn ShortLinks.wsgi

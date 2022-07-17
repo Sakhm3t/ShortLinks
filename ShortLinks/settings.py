@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-be925)x-dju!%v+u97xdjny8w#8k6l2p@+fhn%1ypvrde-o)3q'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-be925)x-dju!%v+u97xdjny8w#8k6l2p@+fhn%1ypvrde-o)3q')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'ShortLinks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# used only for local deployment if DATABASE_URL environment var is not set
 DATABASES = {
 
 

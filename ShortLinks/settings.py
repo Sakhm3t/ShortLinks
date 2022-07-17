@@ -24,7 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-be925)x-dju!%v+u97xdjny8w#8k6l2p@+fhn%1ypvrde-o)3q')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ('SECRET_KEY' not in os.environ)  # I assume that production deployment has it own key
+# DEBUG = ('SECRET_KEY' not in os.environ)  # I assume that production deployment has it own key
+# DEBUG = False works locally but doesn't work on heroku for some reason
+DEBUG = True
 WHITENOISE_MANIFEST_STRICT = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'linkcutter.herokuapp.com']

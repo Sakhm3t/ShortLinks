@@ -1,3 +1,5 @@
+import string
+
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import logout
@@ -38,14 +40,12 @@ def logout_view(request):
     return render(request, 'linkcutter/base.html')
 
 
-list_for_random = list(map(chr, range(ord("a"), ord("z"))))
-list_for_random.extend(map(chr, range(ord("A"), ord("Z"))))
-list_for_random.extend(map(chr, range(ord("0"), ord("9"))))
+list_for_random = string.ascii_letters + string.digits
 
 
 def gen_short_link():
     """   Short link generation   """
-    return ''.join([random.choice(list_for_random) for _ in range(0, 8)])
+    return ''.join(random.sample(list_for_random, 8))
 
 
 def try_to_insert_unique_short_link(request, full_link):

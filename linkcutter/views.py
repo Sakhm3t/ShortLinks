@@ -19,7 +19,7 @@ from django.views import generic
 from django.views.generic import CreateView
 from .models import Links
 
-import random
+import random, string
 
 
 def index(request):
